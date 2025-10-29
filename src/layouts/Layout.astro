@@ -1,0 +1,53 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Default description" } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-gradient-to-br from-blue-600 to-purple-600 min-h-screen">
+    <nav class="sticky top-0 z-50 backdrop-blur-md bg-white/10 border-b border-white/20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-4">
+          <div class="flex items-center">
+            <h1 class="text-white font-bold text-xl">PCFixBlog</h1>
+          </div>
+          <div class="hidden md:flex space-x-8">
+            <a href="/" class="text-white hover:text-gray-200 transition duration-300">Home</a>
+            <a href="/about" class="text-white hover:text-gray-200 transition duration-300">About</a>
+            <a href="/blog" class="text-white hover:text-gray-200 transition duration-300">Blog</a>
+          </div>
+          <div class="md:hidden">
+            <button class="text-white hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main><slot /></main>
+    <footer class="bg-gray-900 text-white py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p>&copy; 2023 PCFixBlog. All rights reserved. Fix Your PC Errors Like a Pro.</p>
+        <div class="mt-4 space-x-4">
+          <a href="/" class="hover:text-gray-400">Home</a>
+          <a href="/about" class="hover:text-gray-400">About</a>
+          <a href="/blog" class="hover:text-gray-400">Blog</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
